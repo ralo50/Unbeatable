@@ -8,29 +8,13 @@
     tools:context=".Activities.MainActivity">
 
     <include layout="@layout/board_layout"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_weight="1"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <include layout="@layout/settings_layout"
         android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_weight="3"/>
 
-        <Switch
-            android:id="@+id/human"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:text="Human">
-        </Switch>
-
-        <Switch
-            android:id="@+id/diff"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Difficulty">
-        </Switch>
-    </RelativeLayout>
 </LinearLayout>

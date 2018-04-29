@@ -8,5 +8,4 @@
     android:layout_height="match_parent"
     tools:context="com.ralo.unbeatable.Activities.BaseActivity"
     tools:showIn="@layout/activity_base">
-
 </FrameLayout>

@@ -1,80 +1,74 @@
 package com.ralo.unbeatable.Activities;
 
+import android.annotation.SuppressLint;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ralo.unbeatable.R;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.ralo.unbeatable.Utils.Game.Board;
+import com.ralo.unbeatable.Utils.Game.GameFlow;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-    private View mainActivity;
-    @BindView(R.id.box0)
-    ImageView box0;
-    @BindView(R.id.box1)
-    ImageView box1;
-    @BindView(R.id.box2)
-    ImageView box2;
-    @BindView(R.id.box3)
-    ImageView box3;
-    @BindView(R.id.box4)
-    ImageView box4;
-    @BindView(R.id.box5)
-    ImageView box5;
-    @BindView(R.id.box6)
-    ImageView box6;
-    @BindView(R.id.box7)
-    ImageView box7;
-    @BindView(R.id.box8)
-    ImageView box8;
 
+    public TextView gameResult;
+    public Button restartButton;
+    public View mainActivity;
+    public static List<ImageView> buttons = new ArrayList<>();
+    public static final int[] BUTTON_IDS = {
+            R.id.box0,
+            R.id.box1,
+            R.id.box2,
+            R.id.box3,
+            R.id.box4,
+            R.id.box5,
+            R.id.box6,
+            R.id.box7,
+            R.id.box8,
+    };
+
+    public static Board board = new Board();
+
+    @SuppressLint("InflateParams")
     @Override
     public void onCreateActivity() {
         mainActivity = getLayoutInflater().inflate(R.layout.activity_main, null, false);
         setMainContainer(mainActivity);
-        ButterKnife.bind(this);
-        box0.setOnClickListener(this);
-        box1.setOnClickListener(this);
-        box2.setOnClickListener(this);
-        box3.setOnClickListener(this);
-        box4.setOnClickListener(this);
-        box5.setOnClickListener(this);
-        box6.setOnClickListener(this);
-        box7.setOnClickListener(this);
-        box8.setOnClickListener(this);
+        restartButton = findViewById(R.id.restart_button);
+        gameResult = findViewById(R.id.game_result);
+        restartButton.setVisibility(View.GONE);
+        setButtonListeners();
 
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.box0:
+        int tag = (int)view.getTag();
+        GameFlow.playMove(tag);
+        if(board.isGameOver()){
+            restartButton.setVisibility(View.VISIBLE);
+            gameResult.setText(board.getWinnerString());
+        }
+    }
 
-            case R.id.box1:
+    public void restartGame(View view) {
+        board.reset();
+        GameFlow.updateBoard();
+        restartButton.setVisibility(View.GONE);
+        gameResult.setText("");
+    }
 
-                break;
-            case R.id.box2:
-
-                break;
-            case R.id.box3:
-
-                break;
-            case R.id.box4:
-
-                break;
-            case R.id.box5:
-
-                break;
-            case R.id.box6:
-
-                break;
-            case R.id.box7:
-
-                break;
-            case R.id.box8:
-
-                break;
+    private void setButtonListeners(){
+        int tagNumberCounter = 0;
+        for (int id : BUTTON_IDS) {
+            ImageView button = findViewById(id);
+            button.setOnClickListener(this);
+            buttons.add(button);
+            button.setTag(tagNumberCounter);
+            tagNumberCounter++;
         }
     }
 }
