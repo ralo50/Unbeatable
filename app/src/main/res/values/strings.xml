@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Unbeatable</string>
+    <string name="drawMessage">Draw!</string>
+    <string name="winMessageUnbeatable">You actually won, nice</string>
+    <string name="winMessageRandom">You Won</string>
+    <string name="loseMessage">You Lost</string>
+    <string name="error">This is not supposed to happen</string>
 </resources>

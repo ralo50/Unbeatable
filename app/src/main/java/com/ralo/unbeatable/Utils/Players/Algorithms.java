@@ -9,6 +9,6 @@ public class Algorithms {
     }
 
     public static void randomPlayer(Board board){
-        RandomPlayer.run(board.getTurn(), board);
+        RandomPlayer.run(board);
     }
 }

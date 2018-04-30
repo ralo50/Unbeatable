@@ -5,13 +5,15 @@ import com.ralo.unbeatable.Utils.Game.Board;
 
 public class AlphaBetaPruning {
     private static double maxPly;
+    private static final int ALPHA = -50;
+    private static final int BETA = 50;
 
     private AlphaBetaPruning() {}
 
     static void run (Board.State player, Board board, double maxPly) {
 
         AlphaBetaPruning.maxPly = maxPly;
-        alphaBetaPruning(player, board, -50, 50, 0);
+        alphaBetaPruning(player, board, ALPHA, BETA, 0);
     }
 
 

@@ -1,5 +1,9 @@
 package com.ralo.unbeatable.Utils.Game;
 
+import com.ralo.unbeatable.Activities.MainActivity;
+import com.ralo.unbeatable.R;
+import com.ralo.unbeatable.UnbeatableApp;
+
 import java.util.HashSet;
 
 
@@ -97,16 +101,17 @@ public class Board {
 
     public String getWinnerString(){
         if(getWinner().equals(State.Blank))
-            return "Draw!";
+            return UnbeatableApp.getCurrentActivity().getString(R.string.drawMessage);
         else if(getWinner().equals(State.O))
-            return "You Lose";
-        else if(getWinner().equals(State.X))
-            return "You actually won, nice";
+            return UnbeatableApp.getCurrentActivity().getString(R.string.loseMessage);
+        else if(getWinner().equals(State.X) && MainActivity.getSwitchState())
+            return UnbeatableApp.getCurrentActivity().getString(R.string.winMessageUnbeatable);
+        else if(getWinner().equals(State.X) && !MainActivity.getSwitchState())
+            return UnbeatableApp.getCurrentActivity().getString(R.string.winMessageRandom);
         else
-            return "this is not supposed to happen";
+            return UnbeatableApp.getCurrentActivity().getString(R.string.error);
     }
     public State getWinner () {
-
         return winner;
     }
 
