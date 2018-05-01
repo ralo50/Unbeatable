@@ -11,4 +11,7 @@ public class Algorithms {
     public static void randomPlayer(Board board){
         RandomPlayer.run(board);
     }
+
+    public static void twoPlayers() {
+    }
 }

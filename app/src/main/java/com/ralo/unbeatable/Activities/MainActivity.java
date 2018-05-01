@@ -19,6 +19,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public Button restartButton;
     public View mainActivity;
     private static Switch difficultySwitch;
+    private static Switch playerSwitch;
     public static boolean isUnbeatable;
     public static List<ImageView> buttons = new ArrayList<>();
     public static final int[] BUTTON_IDS = {
@@ -81,6 +82,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         restartButton.setVisibility(View.GONE);
         difficultySwitch = findViewById(R.id.diff);
         difficultySwitch.setOnCheckedChangeListener(this);
+        playerSwitch = findViewById(R.id.player);
+        playerSwitch.setOnCheckedChangeListener(this);
     }
 
     @Override
@@ -101,22 +104,44 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean turnedOn) {
-        if(turnedOn) {
-            isUnbeatable = true;
-            compoundButton.setText("Unbeatable");
-        } else {
-            isUnbeatable = false;
-            compoundButton.setText("Random");
+        switch (compoundButton.getId()) {
+            case R.id.diff:
+                if (turnedOn) {
+                    isUnbeatable = true;
+                    difficultySwitch.setText(this.getResources().getText(R.string.unbeatable));
+                    break;
+                } else {
+                    isUnbeatable = false;
+                    difficultySwitch.setText(this.getResources().getText(R.string.random));
+                }
+                break;
+            case R.id.player:
+                if(turnedOn){
+                    playerSwitch.setText(this.getResources().getText(R.string.twoPlayers));
+                    difficultySwitch.setEnabled(false);
+                    break;
+                }
+                else {
+                    playerSwitch.setText(this.getResources().getText(R.string.vsComputer));
+                    difficultySwitch.setEnabled(true);
+                }
+                break;
         }
     }
+
     public static boolean isUnbeatable(){
         return isUnbeatable;
     }
     public static void setSwitchState(boolean state){
         difficultySwitch.setClickable(state);
+        playerSwitch.setClickable(state);
     }
 
     public static boolean getSwitchState(){
         return difficultySwitch.isClickable();
+    }
+
+    public static boolean isVersusComputer(){
+        return difficultySwitch.isEnabled();
     }
 }

@@ -8,11 +8,11 @@
         android:id="@+id/settings_layout">
 
         <Switch
-            android:id="@+id/human"
+            android:id="@+id/player"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:text="Human">
+            android:text="@string/vsComputer">
         </Switch>
 
         <Button
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:onClick="restartGame"
-            android:text="Restart"/>
+            android:text="@string/restart"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,6 +33,6 @@
             android:id="@+id/diff"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Random">
+            android:text="@string/random">
         </Switch>
 </RelativeLayout>

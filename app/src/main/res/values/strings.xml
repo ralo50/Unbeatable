@@ -2,7 +2,12 @@
     <string name="app_name">Unbeatable</string>
     <string name="drawMessage">Draw!</string>
     <string name="winMessageUnbeatable">You actually won, nice</string>
-    <string name="winMessageRandom">You Won</string>
-    <string name="loseMessage">You Lost</string>
+    <string name="winMessageRandom">X Won</string>
+    <string name="loseMessage">O Won</string>
     <string name="error">This is not supposed to happen</string>
+    <string name="unbeatable">Unbeatable</string>
+    <string name="random">Random</string>
+    <string name="vsComputer">VS computer</string>
+    <string name="twoPlayers">2 Players</string>
+    <string name="restart">Restart</string>
 </resources>

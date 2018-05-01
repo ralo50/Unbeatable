@@ -11,7 +11,10 @@ public class GameFlow {
     public static void playMove(int move) {
         if (!MainActivity.board.isGameOver() && move != -1) {
             boolean validMove = MainActivity.board.move(move);
-            if (validMove && !MainActivity.board.isGameOver() && MainActivity.isUnbeatable()) {
+            if (validMove && !MainActivity.board.isGameOver() && !MainActivity.isVersusComputer()){
+                Algorithms.twoPlayers();
+            }
+            else if (validMove && !MainActivity.board.isGameOver() && MainActivity.isUnbeatable()) {
                 Algorithms.alphaBetaPruning(MainActivity.board);
             }
             else if (validMove && !MainActivity.board.isGameOver() && !MainActivity.isUnbeatable()) {

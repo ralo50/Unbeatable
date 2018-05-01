@@ -104,7 +104,7 @@ public class Board {
             return UnbeatableApp.getCurrentActivity().getString(R.string.drawMessage);
         else if(getWinner().equals(State.O))
             return UnbeatableApp.getCurrentActivity().getString(R.string.loseMessage);
-        else if(getWinner().equals(State.X) && MainActivity.getSwitchState())
+        else if(getWinner().equals(State.X) && MainActivity.isUnbeatable() && MainActivity.isVersusComputer())
             return UnbeatableApp.getCurrentActivity().getString(R.string.winMessageUnbeatable);
         else if(getWinner().equals(State.X) && !MainActivity.getSwitchState())
             return UnbeatableApp.getCurrentActivity().getString(R.string.winMessageRandom);
