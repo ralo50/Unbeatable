@@ -15,7 +15,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-    public TextView gameResult;
+    public static TextView gameResult;
     public Button restartButton;
     public View mainActivity;
     private static Switch difficultySwitch;

@@ -4,6 +4,7 @@ package com.ralo.unbeatable.Utils.Game;
 import com.ralo.unbeatable.Activities.MainActivity;
 import com.ralo.unbeatable.R;
 import com.ralo.unbeatable.Utils.Players.Algorithms;
+
 import static com.ralo.unbeatable.Utils.Game.Board.BOARD_SIZE;
 
 
