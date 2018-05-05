@@ -7,20 +7,28 @@ import com.ralo.unbeatable.Utils.Game.Board;
 
 public class AlphaBetaPruning {
     private static double maxDepth;
+    private static int numberOfGamesAnalyzed = 0;
+    private static int currentDepth = 0;
     private static final double ALPHA = Double.NEGATIVE_INFINITY;
     private static final double BETA = Double.POSITIVE_INFINITY;
 
     private AlphaBetaPruning() {}
 
     static void run (Board.State player, Board board, double maxDepth) {
+        numberOfGamesAnalyzed = 0;
         int currentDepth = 0;
 
         AlphaBetaPruning.maxDepth = maxDepth;
         alphaBetaPruning(player, board, ALPHA, BETA, currentDepth);
+        String gamesAnalyzed = UnbeatableApp.getCurrentActivity().getString(R.string.gamesAnalyzed) + " " + (numberOfGamesAnalyzed - 1) + "\n" +
+                UnbeatableApp.getCurrentActivity().getString(R.string.currentDepthString ) + " " + (AlphaBetaPruning.currentDepth - 1);
+        MainActivity.gameResult.setText(gamesAnalyzed);
+
     }
 
 
     private static int alphaBetaPruning (Board.State player, Board board, double alpha, double beta, int currentDepth) {
+        numberOfGamesAnalyzed++;
         if (currentDepth++ == maxDepth || board.isGameOver()) {
             return score(player, board, currentDepth);
         }
@@ -30,6 +38,7 @@ public class AlphaBetaPruning {
         } else {
             return getMin(player, board, alpha, beta, currentDepth);
         }
+
     }
 
     private static int getMax (Board.State player, Board board, double alpha, double beta, int currentDepth) {
@@ -83,8 +92,8 @@ public class AlphaBetaPruning {
         return (int) beta;
     }
     private static int score (Board.State player, Board board, int currentDepth) {
-        String currentDepthString = UnbeatableApp.getCurrentActivity().getString(R.string.currentDepthString) + (currentDepth - 1);
-        MainActivity.gameResult.setText(currentDepthString);
+
+        AlphaBetaPruning.currentDepth = currentDepth;
         Board.State opponent = (player == Board.State.X) ? Board.State.O : Board.State.X;
 
         if (board.isGameOver() && board.getWinner() == player) {

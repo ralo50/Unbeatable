@@ -11,4 +11,5 @@
     <string name="twoPlayers">2 Players</string>
     <string name="restart">Restart</string>
     <string name="currentDepthString">Current depth: </string>
+    <string name="gamesAnalyzed">Number of games analyzed: </string>
 </resources>
