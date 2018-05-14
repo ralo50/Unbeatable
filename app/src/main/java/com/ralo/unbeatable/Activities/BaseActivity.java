@@ -1,12 +1,12 @@
 package com.ralo.unbeatable.Activities;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.FrameLayout;
+        import android.os.Bundle;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.View;
+        import android.widget.FrameLayout;
 
-import com.ralo.unbeatable.R;
-import com.ralo.unbeatable.UnbeatableApp;
+        import com.ralo.unbeatable.R;
+        import com.ralo.unbeatable.UnbeatableApp;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private FrameLayout mainContainer;
